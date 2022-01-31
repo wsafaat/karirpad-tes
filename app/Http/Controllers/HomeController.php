@@ -29,7 +29,7 @@ class HomeController extends Controller
             return datatables()->of($produk)
             ->addColumn('gambar', function ($produk) {
                 $url=asset("gambar/produk/$produk->gambar");
-                return '<img src='.$url.' border="0" width="100" class="img-rounded" align="center" />';
+                return '<img src='.$url.' border="0" width="100" class="mx-auto justify-content-center" />';
             })
             ->rawColumns(['gambar'])
             ->addIndexColumn()

@@ -28,14 +28,17 @@ Route::get('/tes-1', function () {
 
 Auth::routes();
 
-Route::middleware(['auth','superuser'])->group(function () {
-    // Route::get('superuser/home', [HomeController::class, 'superuserHome'])->name('superuser.home');
+
+
+Route::middleware(['auth', 'superuser:1'])->group(function () {
     Route::get('superuser/home', [ProdukController::class, 'index'])->name('superuser.home');
     Route::get('superuser/produk/{id}/edit', [ProdukController::class, 'edit']);
     Route::post('superuser/produk/store', [ProdukController::class, 'store']);
     Route::get('superuser/produk/delete/{id}', [ProdukController::class, 'destroy']);
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth', 'superuser:0'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+});
 
 

@@ -12,10 +12,10 @@ use PhpParser\Node\Stmt\Else_;
 class ProdukController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +39,7 @@ class ProdukController extends Controller
             })
             ->addColumn('gambar', function ($produk) {
                 $url=asset("gambar/produk/$produk->gambar");
-                return '<img src='.$url.' border="0" width="100" class="img-rounded" align="center" />';
+                return '<img src='.$url.' border="0" width="100" class="img-thumbnail" align="center" />';
             })
             ->rawColumns(['action','gambar'])
             ->addIndexColumn()

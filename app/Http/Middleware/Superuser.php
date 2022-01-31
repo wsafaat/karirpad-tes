@@ -14,11 +14,11 @@ class Superuser
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $roles)
     {
-        if (auth()->user()->superuser == 1) {
+        if ($request->user()->superuser == $roles) {
             return $next($request);
         }
-        return redirect('home');
+        return redirect('/');
     }
 }

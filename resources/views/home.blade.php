@@ -59,6 +59,7 @@ $(document).ready(function() {
             {
                 data: 'gambar',
                 name: 'gambar',
+                "className": "text-center",
                 orderable: false
             },
             {
